@@ -1,4 +1,5 @@
-from app import db
+
+from Farmer_Web import db
 
 class Pais(db.Model):
      __tablename__ = 'country'
