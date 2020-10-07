@@ -78,6 +78,13 @@ class Cliente(db.Model):
           return '<customer_id{}>'.format(self.customer_id)
 
 def soda():
+    
      sql = text('SELECT public.country.country,COUNT(customer_id) AS clientes FROM public.customer  INNER JOIN public.address ON public.customer.address_id = public.address.address_id INNER JOIN public.city on public.city.city_id =  public.address.city_id INNER JOIN public.country ON public.country.country_id = public.city.country_id GROUP BY public.country.country')
      cole = db.engine.execute(sql)
      return cole
+
+
+class ClientN():
+     def __init__(self,pai,number_client):
+          self.pai = pai
+          self.number_client = number_client
