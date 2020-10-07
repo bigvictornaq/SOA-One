@@ -1,6 +1,7 @@
 from flask import render_template,url_for,json,jsonify
 from Farmer_Web import app
-from Farmer_Web.models import Pais,Ciudad,Address,Cliente
+
+from Farmer_Web.models import Pais,soda
 
 @app.route('/')
 def method_name():
@@ -32,7 +33,8 @@ def clientss():
 
 @app.route('/Clients/paises')
 def numero_clientes():
-    cole = Cliente.query.with_entities(Pais.country,func.count(Cliente.customer_id).label('n_clientes')).join(Address,Cliente.address_id == Address.address_id).join(Ciudad,Address.city_id==Ciudad.city_id).join(Pais,Ciudad.country_id==Pais.country_id).group_by(Pais.country)
-    kendrick = [{"Pais":c.country,"NumeroC":c.n_clientes} for c in cole]
+    
+    cole = soda()
+    kendrick = [{"Pais":c[0],"NumeroC":c[1]} for c in cole]
     dup = json.dumps(kendrick)
     return jsonify({'Data':kendrick})    
