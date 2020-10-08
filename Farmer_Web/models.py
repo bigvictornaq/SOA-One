@@ -3,8 +3,6 @@ from Farmer_Web import db
 from sqlalchemy import text
 
 
-
-
 #sss
 class Pais(db.Model):
      __tablename__ = 'country'
